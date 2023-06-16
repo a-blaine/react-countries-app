@@ -1,6 +1,9 @@
 import "./App.css";
 
 function App() {
+  //API documentation available at https://restcountries.com/
+  //API region url https://restcountries.com/v3.1/region/europe
+  //API search by name url https://restcountries.com/v3.1/name/eesti
   return (
     <div className="App">
       <div className="navbar">
