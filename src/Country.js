@@ -1,19 +1,23 @@
 import React from "react";
 
-export default function Country() {
+export default function Country({ country }) {
+  console.log(country);
+
   return (
     <div className="Country">
-      <div className="card">
-        <img src="/" alt="Country's flag" />
-        <div className="card-contents">
-          <h3>Germany</h3>
-          <ul>
-            <li>Population: 81,000,000</li>
-            <li>Region: Europe</li>
-            <li>Capital: Berlin</li>
-          </ul>
+      <a href="./CountryPage.js">
+        <div className="card">
+          <img src={country.flagUrl} alt="Country's flag" />
+          <div className="card-contents">
+            <h3>{country.name}</h3>
+            <ul>
+              <li>Population: {country.population}</li>
+              <li>Region: {country.region}</li>
+              <li>Capital: {country.capital}</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   );
 }
