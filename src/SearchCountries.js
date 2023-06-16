@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Country from "./Country";
+import CountryCard from "./CountryCard";
+import Country from "./pages/Country";
 import axios from "axios";
 
 export default function SearchCountries() {
@@ -46,7 +47,8 @@ export default function SearchCountries() {
           onChange={updateCountryName}
         />
       </form>
-      <Country country={results} />
+      <CountryCard country={results} />
+      <Country data={results} />
     </div>
   );
 }

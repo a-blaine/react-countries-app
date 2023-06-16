@@ -1,23 +1,27 @@
 import React from "react";
-import SearchCountries from "./SearchCountries";
+import Home from "./pages/Home";
+import Country from "./pages/Country";
+import { Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <div className="navbar">
-        <h1>Where in the world?</h1>
-        <select>
-          <option value="">Filter by Region</option>
-          <option value="africa">Africa</option>
-          <option value="america">America</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="oceania">Oceania</option>
-        </select>
-      </div>
-      <SearchCountries />
-    </div>
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/countrycard">Country</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/countrycard" element={<Country />} />
+      </Routes>
+    </>
   );
 }
 
