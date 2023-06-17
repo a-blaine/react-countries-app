@@ -17,11 +17,16 @@ export default function Countries() {
 
   useEffect(() => {
     loadCountries();
-  });
+  }, []);
+
+  function displayNewCountry(response) {
+    const newCountry = response.data;
+    setCountries(newCountry);
+  }
 
   function getNewCountry(countryName) {
     let apiUrl = `https://restcountries.com/v3.1/name/${countryName}`;
-    axios.get(apiUrl).then(handleResponse);
+    axios.get(apiUrl).then(displayNewCountry);
   }
 
   return (

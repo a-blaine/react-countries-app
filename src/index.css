@@ -29,7 +29,6 @@ img {
 
 ul {
   list-style: none;
-  padding: 0;
 }
 
 li {
@@ -68,10 +67,12 @@ li {
 
 .Search input {
   background: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
   border: none;
   padding: 16px 14px;
   border-radius: 4px;
-  color: hsl(0, 0%, 100%);
+  outline: none;
+  margin-bottom: 30px;
 }
 
 .Search select {
