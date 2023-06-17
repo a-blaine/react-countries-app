@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Search from "./Search";
+import Filter from "./Filter";
 
 export default function Countries() {
   const [countries, setCountries] = useState([]);
-  const allCountriesUrl = "https://restcountries.com/v3.1/all";
 
   function handleResponse(response) {
     const countriesData = response.data;
@@ -12,7 +12,8 @@ export default function Countries() {
   }
 
   function loadCountries() {
-    axios.get(allCountriesUrl).then(handleResponse);
+    const allCountriesApiUrl = "https://restcountries.com/v3.1/all";
+    axios.get(allCountriesApiUrl).then(handleResponse);
   }
 
   useEffect(() => {
@@ -29,9 +30,20 @@ export default function Countries() {
     axios.get(apiUrl).then(displayNewCountry);
   }
 
+  function displayNewRegion(response) {
+    const newRegion = response.data;
+    setCountries(newRegion);
+  }
+
+  function getRegion(regionName) {
+    let regionApiUrl = `https://restcountries.com/v3.1/region/${regionName}`;
+    axios.get(regionApiUrl).then(displayNewRegion);
+  }
+
   return (
     <div className="Countries">
       <Search onSearch={getNewCountry} />
+      <Filter onSelect={getRegion} />
       <div className="countries-wrapper">
         {countries.map((country) => {
           return (
