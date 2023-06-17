@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Search from "./Search";
 
 export default function Countries() {
   const [countries, setCountries] = useState([]);
@@ -18,8 +19,14 @@ export default function Countries() {
     loadCountries();
   });
 
+  function getNewCountry(countryName) {
+    let apiUrl = `https://restcountries.com/v3.1/name/${countryName}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
   return (
     <div className="Countries">
+      <Search onSearch={getNewCountry} />
       <div className="countries-wrapper">
         {countries.map((country) => {
           return (

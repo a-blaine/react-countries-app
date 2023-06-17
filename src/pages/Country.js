@@ -3,7 +3,7 @@ import React from "react";
 export default function Country({ data }) {
   return (
     <div className="Country">
-      <h1>{data.name}</h1>
+      <h1>{data.name.common}</h1>
       <ul>
         <li>Native Name: </li>
         <li>Population: {data.population}</li>
