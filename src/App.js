@@ -1,8 +1,7 @@
 import React from "react";
 import Home from "./pages/Home";
-import SearchCountries from "./SearchCountries";
+import Search from "./Search";
 import { Route, Routes, Link } from "react-router-dom";
-import "./App.css";
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/searchcountries" element={<SearchCountries />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </>
   );

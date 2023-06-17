@@ -1,5 +1,5 @@
 import React from "react";
-import SearchCountries from "../SearchCountries";
+import SearchCountries from "../Search";
 
 export default function Home() {
   return (
