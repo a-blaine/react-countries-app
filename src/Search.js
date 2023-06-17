@@ -5,13 +5,10 @@ import Country from "./pages/Country";
 import axios from "axios";
 
 export default function Search() {
-  const [country, setCountry] = useState(null);
+  const [countryName, setCountryName] = useState(" ");
   const [results, setResults] = useState({});
 
   //API documentation available at https://restcountries.com/
-  function updateCountryName(event) {
-    setCountry(event.target.value);
-  }
 
   function handleResponse(response) {
     console.log(response.data);
@@ -30,23 +27,31 @@ export default function Search() {
     });
   }
 
-  function getCountry(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    let apiUrl = `https://restcountries.com/v3.1/name/${country}`;
+    let apiUrl = `https://restcountries.com/v3.1/name/${countryName}`;
     axios.get(apiUrl).then(handleResponse);
   }
 
   return (
     <div className="Search">
-      <form onSubmit={getCountry}>
+      <form onSubmit={handleSubmit}>
         <input
           type="search"
           placeholder="Search for a country..."
           autoComplete="off"
           autoFocus="off"
-          onChange={updateCountryName}
+          onChange={(event) => setCountryName(event.target.value)}
         />
       </form>
+      <select>
+        <option value="">Filter by Region</option>
+        <option value="africa">Africa</option>
+        <option value="america">America</option>
+        <option value="asia">Asia</option>
+        <option value="europe">Europe</option>
+        <option value="oceania">Oceania</option>
+      </select>
       <Countries />
       <CountryCard country={results} />
       <Country data={results} />
