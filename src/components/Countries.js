@@ -16,34 +16,38 @@ export default function Countries() {
 
   useEffect(() => {
     loadCountries();
-  }, []);
+  });
 
   return (
     <div className="Countries">
-      {countries.map((country) => {
-        return (
-          <div className="card">
-            <img src={country.flags.png} alt={country.name.common} />
-            <div className="card-contents">
-              <h3>{country.name.common}</h3>
-              <ul>
-                <li>
-                  Population:{" "}
-                  <span className="data-font-weight">{country.population}</span>
-                </li>
-                <li>
-                  Region:{" "}
-                  <span className="data-font-weight">{country.region}</span>
-                </li>
-                <li>
-                  Capital:{" "}
-                  <span className="data-font-weight">{country.capital}</span>
-                </li>
-              </ul>
+      <div className="countries-wrapper">
+        {countries.map((country) => {
+          return (
+            <div className="card">
+              <img src={country.flags.png} alt={country.name.common} />
+              <div className="card-contents">
+                <h3>{country.name.common}</h3>
+                <ul>
+                  <li>
+                    Population:{" "}
+                    <span className="data-font-weight">
+                      {country.population}
+                    </span>
+                  </li>
+                  <li>
+                    Region:{" "}
+                    <span className="data-font-weight">{country.region}</span>
+                  </li>
+                  <li>
+                    Capital:{" "}
+                    <span className="data-font-weight">{country.capital}</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

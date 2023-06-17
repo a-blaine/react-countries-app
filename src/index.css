@@ -8,6 +8,16 @@
 
 body {
   font-family: Nunito Sans, sans-serif;
+  color: hsl(0, 0%, 100%);
+  background: hsl(207, 26%, 17%);
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h3 {
+  margin-bottom: 20px;
 }
 
 img {
@@ -20,28 +30,35 @@ ul {
 }
 
 li {
-  font-weight: bold;
-}
-
-.Country .card-contents {
-  padding: 20px;
-  line-height: 1.2;
-  margin: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 .card {
-  background: pink;
-  border: 1px solid #000;
-  margin: 10px auto;
+  background: hsl(209, 23%, 22%);
+  border-radius: 4px;
+  margin: 0 auto;
   display: block;
   width: 250px;
-  aspect-ratio: 3/2;
+}
+
+.card img {
+  border-radius: 4px 4px 0 0;
 }
 
 .card-contents {
-  padding: 5px 10px 20px;
+  padding: 20px;
 }
 
 .data-font-weight {
-  font-weight: normal;
+  font-weight: 300;
+}
+
+.countries-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  row-gap: 60px;
+  margin-top: 100px;
 }
