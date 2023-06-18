@@ -54,10 +54,10 @@ export default function Country() {
                 <span className="data-font-weight">{country.capital}</span>
               </li>
             </ul>
+
             <ul>
               <li>
-                Top Level Domain:{" "}
-                <span className="data-font-weight">{country.tld}</span>
+                Top Level Domain: <span className="data-font-weight"></span>
               </li>
               <li>
                 Currencies:
@@ -68,10 +68,7 @@ export default function Country() {
               </li>
             </ul>
             <p>
-              Border Countries:{" "}
-              <span className="data-font-weight">
-                {country.borderCountries}
-              </span>
+              Border Countries: <span className="data-font-weight"></span>
             </p>
           </div>
         );

@@ -18,6 +18,7 @@ export default function Search({ onSearch }) {
           placeholder="Search for a country..."
           autoComplete="off"
           autoFocus="off"
+          name="search"
           value={countryName}
           onChange={(event) => setCountryName(event.target.value)}
         />

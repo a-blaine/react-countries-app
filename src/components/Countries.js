@@ -8,8 +8,8 @@ export default function Countries() {
   const [countries, setCountries] = useState([]);
 
   function handleResponse(response) {
-    const countriesData = response.data;
-    setCountries(countriesData);
+    const allCountriesData = response.data;
+    setCountries(allCountriesData);
   }
 
   function loadCountries() {
@@ -46,10 +46,10 @@ export default function Countries() {
       <Search onSearch={getNewCountry} />
       <Filter onSelect={getRegion} />
       <div className="countries-wrapper">
-        {countries.map((country) => {
+        {countries.map((country, index) => {
           return (
             <Link to={`/country/${country.name.common}`}>
-              <div className="card">
+              <div className="card" key={index}>
                 <img src={country.flags.png} alt={country.name.common} />
                 <div className="card-contents">
                   <h3>{country.name.common}</h3>
