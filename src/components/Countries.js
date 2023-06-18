@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Search from "./Search";
 import Filter from "./Filter";
@@ -47,28 +48,32 @@ export default function Countries() {
       <div className="countries-wrapper">
         {countries.map((country) => {
           return (
-            <div className="card">
-              <img src={country.flags.png} alt={country.name.common} />
-              <div className="card-contents">
-                <h3>{country.name.common}</h3>
-                <ul>
-                  <li>
-                    Population:{" "}
-                    <span className="data-font-weight">
-                      {country.population}
-                    </span>
-                  </li>
-                  <li>
-                    Region:{" "}
-                    <span className="data-font-weight">{country.region}</span>
-                  </li>
-                  <li>
-                    Capital:{" "}
-                    <span className="data-font-weight">{country.capital}</span>
-                  </li>
-                </ul>
+            <Link to={`/country/${country.name.common}`}>
+              <div className="card">
+                <img src={country.flags.png} alt={country.name.common} />
+                <div className="card-contents">
+                  <h3>{country.name.common}</h3>
+                  <ul>
+                    <li>
+                      Population:{" "}
+                      <span className="data-font-weight">
+                        {country.population}
+                      </span>
+                    </li>
+                    <li>
+                      Region:{" "}
+                      <span className="data-font-weight">{country.region}</span>
+                    </li>
+                    <li>
+                      Capital:{" "}
+                      <span className="data-font-weight">
+                        {country.capital}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
