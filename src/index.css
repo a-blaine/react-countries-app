@@ -46,6 +46,10 @@ button {
   margin: auto 20px;
 }
 
+.Countries {
+  padding: 20px;
+}
+
 .card {
   background: hsl(209, 23%, 22%);
   border-radius: 4px;
