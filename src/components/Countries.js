@@ -53,24 +53,18 @@ export default function Countries() {
                 <img src={country.flags.png} alt={country.name.common} />
                 <div className="card-contents">
                   <h3>{country.name.common}</h3>
-                  <ul>
-                    <li>
-                      Population:{" "}
-                      <span className="data-font-weight">
-                        {country.population}
-                      </span>
-                    </li>
-                    <li>
-                      Region:{" "}
-                      <span className="data-font-weight">{country.region}</span>
-                    </li>
-                    <li>
-                      Capital:{" "}
-                      <span className="data-font-weight">
-                        {country.capital}
-                      </span>
-                    </li>
-                  </ul>
+                  <h5>
+                    Population:{" "}
+                    <span>
+                      {Intl.NumberFormat("en-US").format(country.population)}
+                    </span>
+                  </h5>
+                  <h5>
+                    Region: <span>{country.region}</span>
+                  </h5>
+                  <h5>
+                    Capital: <span>{country.capital}</span>
+                  </h5>
                 </div>
               </div>
             </Link>

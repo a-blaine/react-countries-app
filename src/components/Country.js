@@ -6,10 +6,9 @@ import axios from "axios";
 export default function Country() {
   const [country, setCountry] = useState(null);
   const [loaded, setLoaded] = useState(false);
-  let { countryName } = useParams();
+  const { countryName } = useParams();
 
   function handleCountryResponse(response) {
-    console.log(response.data);
     let data = {
       name: response.data[0].name.common,
       nativeName: Object.values(response.data[0].name.nativeName),
@@ -44,36 +43,32 @@ export default function Country() {
           <Link to={"/"}>Back</Link>
         </button>
         <div className="country-container">
-          <img src={country.flagUrl} alt={country.name.common} />
-          <h2>{country.name.common}</h2>
-          <ul>
-            <li>
-              Native Name:{" "}
-              <span className="data-font-weight">
-                {country.nativeName[0].common}
-              </span>
-            </li>
-            <li>
+          <img src={country.flagUrl} alt={country.name} />
+          <div>
+            <h2>{country.name}</h2>
+            <h5>
+              Native Name: <span>{country.nativeName[0].common}</span>
+            </h5>
+            <h5>
               Population:{" "}
-              <span className="data-font-weight">{country.population}</span>
-            </li>
-            <li>
-              Region: <span className="data-font-weight">{country.region}</span>
-            </li>
-            <li>
-              Sub Region:{" "}
-              <span className="data-font-weight">{country.subRegion}</span>
-            </li>
-            <li>
-              Capital:{" "}
-              <span className="data-font-weight">{country.capital}</span>
-            </li>
-          </ul>
-
-          <ul>
-            <li>
+              <span>
+                {Intl.NumberFormat("en-US").format(country.population)}
+              </span>
+            </h5>
+            <h5>
+              Region: <span>{country.region}</span>
+            </h5>
+            <h5>
+              Sub Region: <span>{country.subRegion}</span>
+            </h5>
+            <h5>
+              Capital: <span>{country.capital}</span>
+            </h5>
+          </div>
+          <div>
+            <h5>
               Top Level Domain:{" "}
-              <span className="data-font-weight">
+              <span>
                 {country.domain.map((domain, index) => {
                   return (
                     <span key={index} className="map-spacing">
@@ -82,10 +77,10 @@ export default function Country() {
                   );
                 })}
               </span>
-            </li>
-            <li>
+            </h5>
+            <h5>
               Currencies:
-              <span className="data-font-weight">
+              <span>
                 {country.currencies.map((currency, index) => {
                   return (
                     <span key={index} className="map-spacing">
@@ -94,32 +89,21 @@ export default function Country() {
                   );
                 })}
               </span>{" "}
-            </li>
-            <li>
+            </h5>
+            <h5>
               Languages:
-              <span className="data-font-weight">
+              <span>
                 {country.languages.map((language, index) => {
                   return (
                     <span key={index} className="map-spacing">
                       {language}
                     </span>
                   );
-                })}{" "}
-              </span>{" "}
-            </li>
-            <li>
-              Border Countries:{" "}
-              <span className="data-font-weight">
-                <Borders
-                  borders={country.borderCountries}
-                  code={country.code}
-                />
-                {country.borderCountries.map((border, index) => {
-                  return <span key={index}>{border} </span>;
-                })}{" "}
+                })}
               </span>
-            </li>
-          </ul>
+            </h5>
+          </div>
+          <Borders borders={country.borderCountries} code={country.code} />
         </div>
       </div>
     );
