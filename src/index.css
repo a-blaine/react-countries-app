@@ -96,3 +96,7 @@ li {
 .navbar {
   background: hsl(209, 23%, 22%);
 }
+
+.Country .map-spacing {
+  padding: 0 10px 0 5px;
+}

@@ -3,12 +3,28 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 export default function Country() {
-  const [country, setCountry] = useState([]);
-  const { countryName } = useParams();
+  const [country, setCountry] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+  let { countryName } = useParams();
 
   function handleCountryResponse(response) {
-    const data = response.data;
+    console.log(response.data);
+    let data = {
+      name: response.data[0].name.common,
+      nativeName: response.data[0].name.nativeName,
+      borderCountries: response.data[0].borders,
+      capital: response.data[0].capital[0],
+      currencies: Object.values(response.data[0].currencies),
+      domain: response.data[0].tld,
+      languages: Object.values(response.data[0].languages),
+      population: response.data[0].population,
+      region: response.data[0].region,
+      subRegion: response.data[0].subregion,
+      flagUrl: response.data[0].flags.png,
+    };
+    console.log(data.currencies);
     setCountry(data);
+    setLoaded(true);
   }
 
   function getCountryByName() {
@@ -20,59 +36,89 @@ export default function Country() {
     getCountryByName();
   }, [countryName]);
 
-  return (
-    <div className="Country">
-      <button>
-        <Link to={"/"}>Back</Link>
-      </button>
-      {country.map((country, index) => {
-        return (
-          <div className="country-container" key={index}>
-            <img src={country.flags.png} alt={country.name.common} />
-            <h2>{country.name.common}</h2>
-            <ul>
-              <li>
-                Native Name:{" "}
-                <span className="data-font-weight">
-                  {country.name.nativeName}
-                </span>
-              </li>
-              <li>
-                Population:{" "}
-                <span className="data-font-weight">{country.population}</span>
-              </li>
-              <li>
-                Region:{" "}
-                <span className="data-font-weight">{country.region}</span>
-              </li>
-              <li>
-                Sub Region:{" "}
-                <span className="data-font-weight">{country.subRegion}</span>
-              </li>
-              <li>
-                Capital:{" "}
-                <span className="data-font-weight">{country.capital}</span>
-              </li>
-            </ul>
+  if (loaded) {
+    return (
+      <div className="Country">
+        <button>
+          <Link to={"/"}>Back</Link>
+        </button>
+        <div className="country-container">
+          <img src={country.flagUrl} alt={country.name.common} />
+          <h2>{country.name.common}</h2>
+          <ul>
+            <li>
+              Native Name:{" "}
+              <span className="data-font-weight">
+                {country.name.nativeName}
+              </span>
+            </li>
+            <li>
+              Population:{" "}
+              <span className="data-font-weight">{country.population}</span>
+            </li>
+            <li>
+              Region: <span className="data-font-weight">{country.region}</span>
+            </li>
+            <li>
+              Sub Region:{" "}
+              <span className="data-font-weight">{country.subRegion}</span>
+            </li>
+            <li>
+              Capital:{" "}
+              <span className="data-font-weight">{country.capital}</span>
+            </li>
+          </ul>
 
-            <ul>
-              <li>
-                Top Level Domain: <span className="data-font-weight"></span>
-              </li>
-              <li>
-                Currencies:
-                <span className="data-font-weight"></span>{" "}
-              </li>
-              <li>
-                Languages:<span className="data-font-weight"></span>{" "}
-              </li>
-            </ul>
-            <p>
-              Border Countries: <span className="data-font-weight"></span>
-            </p>
-          </div>
-        );
-      })}
-    </div>
-  );
+          <ul>
+            <li>
+              Top Level Domain:{" "}
+              <span className="data-font-weight">
+                {country.domain.map((domain, index) => {
+                  return (
+                    <span key={index} className="map-spacing">
+                      {domain}
+                    </span>
+                  );
+                })}
+              </span>
+            </li>
+            <li>
+              Currencies:
+              <span className="data-font-weight">
+                {country.currencies.map((currency, index) => {
+                  return (
+                    <span key={index} className="map-spacing">
+                      {currency.name}
+                    </span>
+                  );
+                })}
+              </span>{" "}
+            </li>
+            <li>
+              Languages:
+              <span className="data-font-weight">
+                {country.languages.map((language, index) => {
+                  return (
+                    <span key={index} className="map-spacing">
+                      {language}
+                    </span>
+                  );
+                })}{" "}
+              </span>{" "}
+            </li>
+            <li>
+              Border Countries:{" "}
+              <span className="data-font-weight">
+                {country.borderCountries.map((border, index) => {
+                  return <span key={index}>{border} </span>;
+                })}{" "}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  } else {
+    return <div>LOADING..</div>;
+  }
 }
