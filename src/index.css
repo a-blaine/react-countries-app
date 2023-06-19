@@ -37,6 +37,15 @@ li {
   line-height: 1.8;
 }
 
+button {
+  padding: 10px 18px;
+  margin-bottom: 10px;
+}
+
+.Country {
+  margin: auto 20px;
+}
+
 .card {
   background: hsl(209, 23%, 22%);
   border-radius: 4px;
