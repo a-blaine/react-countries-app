@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Borders({ borders, code }) {
+export default function Borders({ borders }) {
   if (typeof borders === "undefined") {
     return null;
   } else {
@@ -8,11 +8,10 @@ export default function Borders({ borders, code }) {
       <div className="Borders">
         <h5>
           Border Countries:
-          <div>{code}</div>
           <br />
           {borders.map((border, index) => {
             return (
-              <span className="border-btn" key={index}>
+              <span className="borders-btn" key={index}>
                 {border}
               </span>
             );

@@ -116,12 +116,7 @@ button {
   padding: 0 10px 0 5px;
 }
 
-.Country .country-container {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.border-btn {
+.borders-btn {
   padding: 8px 20px;
   margin: auto 10px;
   background: hsl(210, 25%, 13%);

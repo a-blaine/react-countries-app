@@ -42,68 +42,72 @@ export default function Country() {
         <button>
           <Link to={"/"}>Back</Link>
         </button>
-        <div className="country-container">
-          <img src={country.flagUrl} alt={country.name} />
-          <div>
-            <h2>{country.name}</h2>
-            <h5>
-              Native Name: <span>{country.nativeName[0].common}</span>
-            </h5>
-            <h5>
-              Population:{" "}
-              <span>
-                {Intl.NumberFormat("en-US").format(country.population)}
-              </span>
-            </h5>
-            <h5>
-              Region: <span>{country.region}</span>
-            </h5>
-            <h5>
-              Sub Region: <span>{country.subRegion}</span>
-            </h5>
-            <h5>
-              Capital: <span>{country.capital}</span>
-            </h5>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <img src={country.flagUrl} alt={country.name} />
+            </div>
+            <div className="col">
+              <h2>{country.name}</h2>
+              <h5>
+                Native Name: <span>{country.nativeName[0].common}</span>
+              </h5>
+              <h5>
+                Population:{" "}
+                <span>
+                  {Intl.NumberFormat("en-US").format(country.population)}
+                </span>
+              </h5>
+              <h5>
+                Region: <span>{country.region}</span>
+              </h5>
+              <h5>
+                Sub Region: <span>{country.subRegion}</span>
+              </h5>
+              <h5>
+                Capital: <span>{country.capital}</span>
+              </h5>
+            </div>
+            <div className="col">
+              <h5>
+                Top Level Domain:{" "}
+                <span>
+                  {country.domain.map((domain, index) => {
+                    return (
+                      <span key={index} className="map-spacing">
+                        {domain}
+                      </span>
+                    );
+                  })}
+                </span>
+              </h5>
+              <h5>
+                Currencies:
+                <span>
+                  {country.currencies.map((currency, index) => {
+                    return (
+                      <span key={index} className="map-spacing">
+                        {currency.name}
+                      </span>
+                    );
+                  })}
+                </span>{" "}
+              </h5>
+              <h5>
+                Languages:
+                <span>
+                  {country.languages.map((language, index) => {
+                    return (
+                      <span key={index} className="map-spacing">
+                        {language}
+                      </span>
+                    );
+                  })}
+                </span>
+              </h5>
+            </div>
           </div>
-          <div>
-            <h5>
-              Top Level Domain:{" "}
-              <span>
-                {country.domain.map((domain, index) => {
-                  return (
-                    <span key={index} className="map-spacing">
-                      {domain}
-                    </span>
-                  );
-                })}
-              </span>
-            </h5>
-            <h5>
-              Currencies:
-              <span>
-                {country.currencies.map((currency, index) => {
-                  return (
-                    <span key={index} className="map-spacing">
-                      {currency.name}
-                    </span>
-                  );
-                })}
-              </span>{" "}
-            </h5>
-            <h5>
-              Languages:
-              <span>
-                {country.languages.map((language, index) => {
-                  return (
-                    <span key={index} className="map-spacing">
-                      {language}
-                    </span>
-                  );
-                })}
-              </span>
-            </h5>
-          </div>
-          <Borders borders={country.borderCountries} code={country.code} />
+          <Borders borders={country.borderCountries} />
         </div>
       </div>
     );
