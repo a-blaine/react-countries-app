@@ -137,5 +137,5 @@ button {
 }
 
 .grid-3-columns {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 2fr 1fr 1fr;
 }
