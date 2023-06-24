@@ -48,36 +48,15 @@ button {
   border-radius: 4px;
 }
 
-.Countries {
-  padding: 20px;
-}
-
-.Country {
-  margin: auto 20px;
-}
-
-.card {
+.navbar {
   background: hsl(209, 23%, 22%);
-  border-radius: 4px;
-  margin: 0 auto;
-  display: block;
-  width: 280px;
 }
 
-.card img {
-  border-radius: 4px 4px 0 0;
-}
-
-.card-contents {
-  padding: 20px;
-}
-
-.countries-wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 10px;
-  row-gap: 30px;
-  margin: 100px 30px 0;
+.search-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .Search input {
@@ -108,8 +87,43 @@ button {
   cursor: pointer;
 }
 
-.navbar {
+.Countries {
+  padding: 20px;
+}
+
+.Country {
+  margin: auto 20px;
+}
+
+.Country h5 {
+  margin: 18px auto;
+}
+
+.card {
   background: hsl(209, 23%, 22%);
+  border-radius: 4px;
+  margin: 0 auto;
+  display: block;
+  width: 280px;
+}
+
+.card img {
+  border-radius: 4px 4px 0 0;
+}
+
+.card-contents {
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+}
+
+.countries-wrapper {
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 10px;
+  row-gap: 30px;
+  margin: 100px 30px 0;
 }
 
 .Country .map-spacing {
@@ -120,4 +134,8 @@ button {
   padding: 8px 20px;
   margin: auto 10px;
   background: hsl(210, 25%, 13%);
+}
+
+.grid-3-columns {
+  grid-template-columns: repeat(3, 1fr);
 }

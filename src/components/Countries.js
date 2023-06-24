@@ -43,39 +43,35 @@ export default function Countries() {
 
   return (
     <div className="Countries">
-      <Search onSearch={getNewCountry} />
-      <Filter onSelect={getRegion} />
-      <div className="container">
-        <div className="row">
-          {countries.map((country, index) => {
-            return (
-              <Link to={`/country/${country.name.common}`}>
-                <div className="col-3" key={index}>
-                  <div className="card">
-                    <img src={country.flags.png} alt={country.name.common} />
-                    <div className="card-contents">
-                      <h3>{country.name.common}</h3>
-                      <h5>
-                        Population:{" "}
-                        <span>
-                          {Intl.NumberFormat("en-US").format(
-                            country.population
-                          )}
-                        </span>
-                      </h5>
-                      <h5>
-                        Region: <span>{country.region}</span>
-                      </h5>
-                      <h5>
-                        Capital: <span>{country.capital}</span>
-                      </h5>
-                    </div>
-                  </div>
+      <div className="search-header">
+        <Search onSearch={getNewCountry} />
+        <Filter onSelect={getRegion} />
+      </div>
+      <div className="countries-wrapper grid">
+        {countries.map((country, index) => {
+          return (
+            <Link to={`/country/${country.name.common}`}>
+              <div className="card" key={index}>
+                <img src={country.flags.png} alt={country.name.common} />
+                <div className="card-contents">
+                  <h3>{country.name.common}</h3>
+                  <h5>
+                    Population:{" "}
+                    <span>
+                      {Intl.NumberFormat("en-US").format(country.population)}
+                    </span>
+                  </h5>
+                  <h5>
+                    Region: <span>{country.region}</span>
+                  </h5>
+                  <h5>
+                    Capital: <span>{country.capital}</span>
+                  </h5>
                 </div>
-              </Link>
-            );
-          })}
-        </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

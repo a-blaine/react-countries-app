@@ -8,7 +8,6 @@ export default function Borders({ borders }) {
       <div className="Borders">
         <h5>
           Border Countries:
-          <br />
           {borders.map((border, index) => {
             return (
               <span className="borders-btn" key={index}>
