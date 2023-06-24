@@ -93,10 +93,40 @@ button {
 
 .Country {
   margin: auto 20px;
+  padding: 20px 0;
 }
 
 .Country h5 {
   margin: 18px auto;
+}
+
+.Country .grid {
+  grid-gap: 30px;
+}
+
+.Country .img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Country img {
+  display: flex;
+  object-fit: contain;
+  width: 500px;
+  height: 400px;
+}
+
+.Country .country-details {
+  padding: auto 50px;
+}
+.Country .map-spacing {
+  padding: 0 10px 0 5px;
+}
+
+.Country .country-wrapper {
+  padding: 30px;
 }
 
 .card {
@@ -126,16 +156,12 @@ button {
   margin: 100px 30px 0;
 }
 
-.Country .map-spacing {
-  padding: 0 10px 0 5px;
-}
-
 .borders-btn {
   padding: 8px 20px;
   margin: auto 10px;
   background: hsl(210, 25%, 13%);
 }
 
-.grid-3-columns {
-  grid-template-columns: 2fr 1fr 1fr;
+.grid-2-columns {
+  grid-template-columns: 1fr 1fr;
 }
